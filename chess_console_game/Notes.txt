@@ -1,0 +1,47 @@
+from Project_content import *
+from rich.console import Console
+from rich.rule import Rule
+c=Console()
+c.print("We will start the chess game with 2 Players \nEach player should choose (cell from,cell to) for example(a2,a3)\nLet's Start :=)\n")
+#fill the board and print it to start the game
+first_board()
+printer()
+#Start the 2-players game and give each player his turn
+def game_start():
+        player_flag=True
+        while True:
+                player_info = input_checker(player_flag)
+                print(player_info)
+                c.print("\n\n\n\n\n\n\n\n\n\n\n")
+                print(player_flag,"andrew")
+                result=move_agreement(player_info)
+                print(result,"P1")
+                printer()
+                c.print("\n\n\n\n")
+                if result =="CHECK":
+                        c.print("WARNING PLAYER 2 CHECK MATE!!!", style="bold red")
+                        continue
+                if result==True:
+                        player_flag=False
+                        player_info = input_checker(player_flag)
+                        print(player_info)
+                        c.print("\n\n\n\n\n\n\n\n\n\n\n")
+                        print(player_flag,"andrew")
+                        result=move_agreement(player_info)
+                        print(result,"P2")
+                        printer()
+                        c.print("\n\n\n\n")
+                        if result =="CHECK":
+                                 c.print("WARNING PLAYER 1 CHECK MATE!!!", style="bold red")
+                                 continue
+                        if result==True:
+                                player_flag=True
+                        else:
+                                c.print("Wrong move!")         
+                else:
+                        c.print("Wrong move!")  
+                
+        
+        
+game_start()    
+print("backuped yes its")
